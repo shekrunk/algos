@@ -108,7 +108,7 @@ public class MergeSort {
 		while(i<leftSize && j<rightSize) {
 			array[k++] = (leftTmpArr[i]<=rightTmpArr[j])?leftTmpArr[i++]:rightTmpArr[j++];
 		}
-		
+			
 		while(i<leftSize) {
 			array[k++] = leftTmpArr[i++];
 		}

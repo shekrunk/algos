@@ -42,8 +42,6 @@ public class SelectionSort {
 					min_idx = j;
 				}
 			}
-			
-
 			ArrayUtils.swap(array, min_idx, i);//swap the min index with the element in iteration
 		}
 		

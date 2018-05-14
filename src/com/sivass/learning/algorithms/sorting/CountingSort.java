@@ -46,9 +46,9 @@ public class CountingSort {
 			ArrayUtils.print(countArray);
 			int[] tmp = new int[len];
 			for(int k = len-1;k>=0;k--) {
-				System.out.println("k: "+ k +", array[k]: "+ array[k] + ", countArray[array[k]]: "+ countArray[array[k]] + ", countArray[array[k]]-1 : " + (countArray[array[k]]-1));
-				tmp[countArray[array[k]]-1] = array[k];
-				--countArray[array[k]];
+				//System.out.println("k: "+ k +", array[k]: "+ array[k] + ", countArray[array[k]]: "+ countArray[array[k]] + ", countArray[array[k]]-1 : " + (countArray[array[k]]-1));
+				tmp[--countArray[array[k]]] = array[k];
+				//--countArray[array[k]];
 			}
 //			ArrayUtils.print(tmp);
 			 for (int i = 0; i<len; ++i)

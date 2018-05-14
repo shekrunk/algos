@@ -2,19 +2,17 @@ package com.sivass.learning.algorithms.sorting;
 
 import com.sivass.learning.algorithms.utils.ArrayUtils;
 
-public class MergeSort {
+public class MergeSortDescending {
 	//TimeComplexity: O(n log2 n)
 	//SpaceComplexity: 
 	public static void main(String[] args){
-		MergeSort ms = new MergeSort();
+		MergeSortDescending ms = new MergeSortDescending();
 		
 		int[] array = new int[]{439, 82985, -34046, 59409, 10943094, 4099443, 43, -8438};
 //		array = new int[]{20, 35, -15, 7, 55, 1, -22};
 //		array = new int[]{1, 20, 6, 4, 5};
-//		int counts = ms.sort(array);
-//		System.out.println(counts);
-	
-		//ms.sort2(array, 0, array.length-1);
+		/*int counts = ms.sort(array);
+		System.out.println(counts);*/
 		ms.sort2(array);
 		ArrayUtils.print(array);
 	}
@@ -43,7 +41,7 @@ public class MergeSort {
 	
 	private int merge(int[] array, int start, int mid, int end) {
 		int invCount = 0;
-		if(array[mid-1] <= array[mid]) { //compare last element of left half array with first element of right half array - if its true then original array would be sorted
+		if(array[mid-1] >= array[mid]) { //compare last element of left half array with first element of right half array - if its true then original array would be sorted
 			return invCount;
 		}
 		
@@ -56,7 +54,7 @@ public class MergeSort {
 			if(array[i] > array[j]) {
 				invCount += mid-i;
 			}
-			temp[tempIndex++] = (array[i] <= array[j]) ? array[i++] : array[j++]; //copy to temp array from both left and right arrays by comparing each element from both halves; <= makes this algorithm stable
+			temp[tempIndex++] = (array[i] >= array[j]) ? array[i++] : array[j++]; //copy to temp array from both left and right arrays by comparing each element from both halves; <= makes this algorithm stable
 		}
 		
 		//System.arraycopy(sourceArr, startingPostionInSourceArray, destArray,  startingPostionInDestArray, noOfElementsTobeCopied
@@ -104,7 +102,7 @@ public class MergeSort {
 		
 		int i=0, j=0, k=start;
 		while(i<leftSize && j<rightSize) {
-			array[k++] = (leftTmpArr[i]<=rightTmpArr[j])?leftTmpArr[i++]:rightTmpArr[j++];
+			array[k++] = (leftTmpArr[i]>=rightTmpArr[j])?leftTmpArr[i++]:rightTmpArr[j++];
 		}
 			
 		while(i<leftSize) {
@@ -115,5 +113,4 @@ public class MergeSort {
 			array[k++] = rightTmpArr[j++];
 		}
 	}
-	
 }

@@ -2,12 +2,12 @@ package com.sivass.learning.algorithms.sorting;
 
 import com.sivass.learning.algorithms.utils.ArrayUtils;
 
-public class QuickSort {
+public class QuickSortDescending {
 	//TimeComplexity: O(n log2 n); Worst Case: O(n2); depends on pivot
 	//UnStable
 	
 	public static void main(String... args) {
-		QuickSort qs = new QuickSort();
+		QuickSortDescending qs = new QuickSortDescending();
 		int[] array = new int[] {434, 764, 1, 0, 34390, 6847243, 326, -343, 6343, -4734};
 		//array = new int[] {10, 7, 8, 9, 1, 5};
 		//array = new int[] {1, 4, 2, 4, 2, 4, 1, 2, 4, 1, 2, 2, 2, 2, 4, 1, 4, 4, 4};
@@ -37,11 +37,11 @@ public class QuickSort {
 		int j = end;
 		
 		while(i<j) {
-			while(i<j && array[--j]>=pivot);//empty loop; find element from last greater than the pivot; 
+			while(i<j && array[--j]<=pivot);//empty loop; find element from first less than the pivot;
 			if(i<j) {
 				array[i] = array[j];//element greater than pivot must go after pivot
 			}
-			while(i<j && array[++i]<=pivot);//empty loop; find element from first less than the pivot;
+			while(i<j && array[++i]>=pivot);//empty loop; find element from last greater than the pivot;
 			if(i<j) {
 				array[j] = array[i];//element lesser than pivot must go before pivot
 			}
@@ -59,7 +59,7 @@ public class QuickSort {
 			int pivot = partition2(array, start, end); //pivot - correct sorted position(index) of the pivot element
 			sort2(array, start, pivot-1);
 			sort2(array, pivot+1, end);
-		}
+        }
 	}
 	
 	private int partition2(int[] array, int start, int end) {
@@ -67,7 +67,7 @@ public class QuickSort {
 		int i = start - 1;//one index lesser than start;
 
 		for(int j = start; j<end; j++) {
-			if(array[j] <= pivot) {
+			if(array[j] >= pivot) {
 				i++;
 				ArrayUtils.swap(array, i, j);
 			}

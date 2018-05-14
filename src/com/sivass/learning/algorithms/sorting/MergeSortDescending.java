@@ -11,9 +11,9 @@ public class MergeSortDescending {
 		int[] array = new int[]{439, 82985, -34046, 59409, 10943094, 4099443, 43, -8438};
 //		array = new int[]{20, 35, -15, 7, 55, 1, -22};
 //		array = new int[]{1, 20, 6, 4, 5};
-		/*int counts = ms.sort(array);
-		System.out.println(counts);*/
-		ms.sort2(array);
+		int counts = ms.sort(array);
+		System.out.println(counts);
+//		ms.sort2(array);
 		ArrayUtils.print(array);
 	}
 	
@@ -51,7 +51,7 @@ public class MergeSortDescending {
 		int tempIndex=0;
 		
 		while(i<mid && j<end) {//loop until ends of both left and right half arrays
-			if(array[i] > array[j]) {
+			if(array[i] >= array[j]) {
 				invCount += mid-i;
 			}
 			temp[tempIndex++] = (array[i] >= array[j]) ? array[i++] : array[j++]; //copy to temp array from both left and right arrays by comparing each element from both halves; <= makes this algorithm stable
